@@ -29,21 +29,21 @@
 		//获取cookie
 		function getCookie(key) {
 			// body...
-			// var mKey = key+"=";
-			// var mCookie = document.cookie.split(";");
-			// // document.write(mCookie);
-			// for(var index = 0; index < mCookie.length; index++){
-			// 	var keys = mCookie[index].trim();
-			// 	if(keys.indexOf(mKey) == 0){
-			// 		return keys.subString(mKey.length,keys.length);
-			// 	}
-			// }
-			// return "";
-			var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-			if(arr=document.cookie.match(reg))
-			return unescape(arr[2]);
-			else
-			return null;
+			var mKey = key+"=";
+			var mCookie = document.cookie.split(";");
+			// document.write(mCookie);
+			for(var index = 0; index < mCookie.length; index++){
+				var keys = mCookie[index].trim();
+				if(keys.indexOf(mKey) == 0){
+					return keys.subString(mKey.length,keys.length);
+				}
+			}
+			return "";
+			// var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+			// if(arr=document.cookie.match(reg))
+			// return unescape(arr[2]);
+			// else
+			// return null;
 
 		}
 		//保存用户cookie
@@ -66,7 +66,8 @@
 		//删除用户cookie
 		function deleteUser() {
 			// body...
-			document.cookie="username='';password='';expires=Thu, 01 Jan 1970 00:00:00 GMT;"
+			document.cookie="password='';expires=Thu, 01 Jan 1970 00:00:00 GMT;"
+			document.cookie="username='';expires=Thu, 01 Jan 1970 00:00:00 GMT;"
 		}
 		//获取用户cookie
 		// function getUser() {
