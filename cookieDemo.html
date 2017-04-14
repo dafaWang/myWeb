@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MyCookieDemo</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		//设置cookie
+		function setCookie(key,value,overtime) {
+			// body...
+			var date = new Date();
+			date.setTime(date.getTime()+(overtime*24*60*60*1000));
+			var expires = "expires="+date.toGMTString();
+			document.cookie=key+"="+value+";"//+expires;
+
+		}
+		//检查cookie
+		function checkCookie(){
+			var cookieName = getCookie("username");
+			// console.log("cookieName");
+
+			if(cookieName != ""){
+				document.getElementById('name_in').value=cookieName;
+			}
+			var cookiePw = getCookie("password");
+			if(cookiePw != ""){
+				document.getElementById('pw_in').value=cookiePw;
+			}
+		}
+		//获取cookie
+		function getCookie(key) {
+			// body...
+			// var mKey = key+"=";
+			// var mCookie = document.cookie.split(";");
+			// // document.write(mCookie);
+			// for(var index = 0; index < mCookie.length; index++){
+			// 	var keys = mCookie[index].trim();
+			// 	if(keys.indexOf(mKey) == 0){
+			// 		return keys.subString(mKey.length,keys.length);
+			// 	}
+			// }
+			// return "";
+			var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+			if(arr=document.cookie.match(reg))
+			return unescape(arr[2]);
+			else
+			return null;
+
+		}
+		//保存用户cookie
+		function saveUser() {
+			// body...
+			var userInputName = document.getElementById('name_in').value;
+			if(userInputName != ""){
+				setCookie("username",userInputName,7);
+			}else{
+				alert("您还未输入用户名");
+			}
+			var userinputpass = document.getElementById('pw_in').value;
+			if(userinputpass != ""){
+				setCookie("password",userinputpass,7);
+			}else{
+				alert("您还未输入密码");
+			}
+
+		}
+		//删除用户cookie
+		function deleteUser() {
+			// body...
+			document.cookie="username='';password='';expires=Thu, 01 Jan 1970 00:00:00 GMT;"
+		}
+		//获取用户cookie
+		// function getUser() {
+		// 	// body...
+		// 	var cookieName = getCookie("username");
+		// 	if(cookieName != ""){
+		// 		document.getElementById('')
+		// 	}
+		// }
+	</script>
+</head>
+<body onload="checkCookie()">
+	<div style="text-align:center">
+		<input type="text" name="un" value="" id="name_in" placeholder="请输入用户名"><br/>
+		<input type="password" name="ps" value="" id="pw_in" placeholder="请输入密码"><br/>
+		<button id="saveUser" onclick="saveUser()">保存用户</button>
+		<button id="deleteUser" onclick="deleteUser()">删除用户</button>
+	</div>
+</body>
+</html>
