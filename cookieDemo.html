@@ -35,7 +35,7 @@
 			for(var index = 0; index < mCookie.length; index++){
 				var keys = mCookie[index].trim();
 				if(keys.indexOf(mKey) == 0){
-					return keys.subString(mKey.length,keys.length);
+					return keys.substring(mKey.length,keys.length);
 				}
 			}
 			return "";
