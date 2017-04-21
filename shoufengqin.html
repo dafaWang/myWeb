@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>手风琴Demo</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		a{
+			text-decoration: none;
+			font-size: 30px;
+			font-weight: bold;
+		}
+		.box .down {
+			width: 50px;
+			height: 50px;
+			display: inline-block;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 50%;
+			color: white;
+			background-color: gray;
+		}
+		.box p{
+			display: none;
+		}
+		
+	</style>
+	<script type="text/javascript">
+		function selectP(id) {
+			// body...
+			// var d = document.getElementsByClassName('box');
+			// for (var i = 0; i < d.length; i++) {
+			// 	d[i]
+			// }
+			var c = document.getElementsByTagName('p');
+			var ele = document.getElementById(id);
+			var status = getStyle(ele,"display");
+
+			if(status == 'block'){
+				ele.style.display = 'none';
+				return;
+			}
+
+			for (var i = 0; i < c.length; i++) {
+				c[i].style.display = "none";
+			}
+			// console.log(id);
+			console.log("id : "+id+"  display : "+status+" ele : "+ele);
+			if(status == 'none'){
+				ele.style.display = 'block';
+			}
+		}
+		function getStyle(obj, attr) {
+			return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj, false)[attr];
+		}
+	</script>
+</head>
+<body>
+	<div class="box">
+			<a href="javascript:selectP('p1');" class="down">+</a>
+			<a href="javascript:selectP('p1');">section1</a>
+			<p id="p1">莫听穿林打叶声,何妨吟啸且徐行.</p>
+	</div>
+	<div class="box">
+			<a href="javascript:selectP('p2');" class="down">+</a>
+			<a href="javascript:selectP('p2');">section2</a>
+			<p id="p2">竹杖芒鞋轻胜马,谁怕?</p>
+	</div>
+	<div class="box">
+		<a href="javascript:selectP('p3');" class="down">+</a>
+		<a href="javascript:selectP('p3');">section3</a>
+		<p id="p3">一蓑烟雨任平生</p>
+	</div>
+</body>
+</html>

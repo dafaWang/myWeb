@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>eventDemo</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		var a = "hello kitty";
+		var b = new String("hello bobby");
+		function loo() {
+			// body...
+			document.getElementById('secondP').innerHTML = (a===b);
+		}
+		function onOver() {
+			document.getElementById('secondP').innerHTML = typeof a;
+		}
+		function onOut(){
+			document.getElementById('secondP').innerHTML = a.substring(0,a.length/2).toUpperCase()+a.substring(a.length/2,a.length).toLowerCase();
+		}
+		function youxi() {
+			var person = {name:'harry',age:24,job:'it'};
+			var x = "";
+			var y;
+			for(y in person){
+				x = x +"--"+person[y];
+			}
+			document.getElementById('secondP').innerHTML = x;
+		}
+
+	</script>
+</head>
+<body onload="loo()">
+	<p onmouseover="onOver()" onmouseout="onOut()">这是一个段落</p>
+	<p id="secondP">这是另一个段落</p>
+	<input type="button" name="inbtn" onclick="youxi()" value="点一下">
+</body>
+</html>
