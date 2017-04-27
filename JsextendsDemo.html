@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 继承 demo</title>
+	<meta charset="utf-8">
+	<script type="text/javascript">
+		function person(name,age){
+			this.name = name;
+			this. age = age;
+			return this
+		}
+		function student(name ,age, className){
+			var student = new person(name,age);
+			student.mClassName = className;
+			return student;
+		}
+		function showStudent(d){
+			for(x in d){
+				var s = document.getElementById('p').innerHTML;
+				document.getElementById('p').innerHTML = s+'--'+d[x];
+				console.log(d,s,x)
+			}
+		}
+	</script>
+</head>
+<body>
+<button id="button" onclick="showStudent(student('dafa',24,'lalala'))">获取student信息</button><br/>
+<p id="p">AAA:</p>
+</body>
+</html>
